@@ -9,29 +9,37 @@ void printLL(int_LL *start)
 
 int main()
 {
-	printf("init linkeded list to 500\n");
-	int_LL *l = initLinkedList(500);
-	printf("LL: %d\n", getLink(l, 0));
 
-	printf("Push back linked list 20\n");
-	pushBackLinkedList(l, 20);
-	printLL(l);
+	printf("Init 10 length linked list...\n\n");
+	int_LL *ll = initLinkedList(0);
+	for(int i = 1; i < 10; i++)
+		pushBackLinkedList(ll, i);
+	printLL(ll);
 
-	printf("Insert linked list to 1 23\n");
-	insertLinkedList(l, 1, 23);
-	printLL(l);
+	printf("Accessor Methods:\n");
+	printf("\tgetLink(ll, 4): %d\n", getLink(ll, 4));
+	printf("\tfrontLink(ll): %d\n", frontLink(ll));
+	printf("\tbackLink(ll): %d\n", backLink(ll));
+	printf("\tlinkPointer(ll, 4): %p\n", linkPointer(ll, 4));
 
-	printf("Linked List Size: %d\n", linkedListSize(l));
+	printf("\nModifier Methods:\n");
+	printf("\tinsertLinkedList(ll, 0, 2019)\n");
+	printf("\tpopBackLinkedList(ll)\n");
+	printf("\tpushBackLinkedList(ll, 2018)\n");
+	printf("\tdeleteLink(ll, 2)\n");
+	printf("\tinsertLinkedList(ll, 6, 69)\n");
+	printf("\tsetLink(ll, 1, 1000)\n");
+	printf("\tswapLink(ll, 3, 4)\n");
 
-	printf("Get link 0: %d\n", getLink(l, 0));
+	ll = insertLinkedList(ll, 0, 2019);
+	popBackLinkedList(ll);
+	pushBackLinkedList(ll, 2018);
+	deleteLink(ll, 2);
+	ll = insertLinkedList(ll, 6, 69);
+	setLink(ll, 1, 1000);
+	swapLink(ll, 3, 4);
 
-	printf("Delete link 1\n");
-	deleteLink(l, 1);
-	printLL(l);
+	printf("\nFinal List:\n"); 
 
-	printf("Set link 0 to 234\n");
-	setLink(l, 0, 234);
-	printLL(l);
-
-	freeLinkedList(l);
+	printLL(ll);
 }

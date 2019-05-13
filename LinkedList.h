@@ -46,7 +46,7 @@ void pushBackLinkedList(int_LL *start, int val)
 
 /* Adds a link to the list at a certain index, pushing back the rest on the links.
  */
-int insertLinkedList(int_LL *start, int index, int val)
+int_LL* insertLinkedList(int_LL *start, int index, int val)
 {
 	int_LL *t = start;
 	for(int i = 0; i < index - 1; i++)
@@ -60,7 +60,9 @@ int insertLinkedList(int_LL *start, int index, int val)
 	int_LL *insert = initLinkedList(val);
 	t->nxt = insert;
 	insert->nxt = nxt;
-	return insert;
+	if(index == 0)
+		return insert;
+	return start;
 }
 
 
@@ -135,7 +137,7 @@ int frontLink(int_LL *start)
 
 /* Deletes the last link in the list.
  */
-void popBackLink(int_LL *start)
+void popBackLinkedList(int_LL *start)
 {
 	int_LL *t = start, *t2;
 	while(t->nxt)
