@@ -123,3 +123,49 @@ void setLink(int_LL *start, int index, int val)
 	}
 	t->val = val;
 }
+
+/* Gets the first value in the list. Basically useless, but whatever.
+ */
+int frontLink(int_LL *start)
+{
+	return start->val;
+}
+
+/* Deletes the last link in the list.
+ */
+void popBackLink(int_LL *start)
+{
+	int_LL *t = start, *t2;
+	while(t->nxt)
+	{
+		t2 = t;
+		t = t->nxt;
+	}
+	t2->nxt = NULL;
+	free(t);
+}
+
+/* Returns the last link in the list.
+ */
+int backLink(int_LL *start)
+{
+	int_LL *t = start;
+	while(t->nxt)
+		t=t->nxt;
+	return t->val;
+}
+
+/* Returns the pointer to the link at the given index. If the index is greater than the size of the
+ * list, returns a pointer to the last link in the list. If the index is less than 0, returns a
+ * pointer to the first element, which is essentialy the pointer already passed to the method by the
+ * "start" parameter.
+ */ 
+int_LL* linkPointer(int_LL *start, int index)
+{
+	int_LL *t = start;
+	for(int i = 0; i < index && t->nxt; i++)
+	{
+		t =  t->nxt;
+	}
+	return t;
+}
