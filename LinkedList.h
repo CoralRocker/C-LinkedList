@@ -6,6 +6,11 @@ typedef struct int_LL {
 	int val;
 }int_LL;
 
+/* Initialize a linked list pointer with a given value. The list is initialized with malloc,
+ * so the list will eventually have to be freed before the end of the program is reached. The
+ * pointer for the next link is set to NULL, which the list always takes to mean that said 
+ * link is the end of the list.
+ */
 int_LL *initLinkedList(int val)
 {
 	int_LL *ll = (int_LL*)malloc(sizeof(int_LL));
@@ -14,10 +19,13 @@ int_LL *initLinkedList(int val)
 	return ll;
 }
 
+/* Frees every link in the list sequentially. This method assumes that the only methods used
+ * to instatiate the list were the ones provided here, or malloc. 
+ */
 void freeLinkedList(int_LL* start)
 {
 	int_LL *t = start;
-	while(t->nxt != NULL)
+	while(t->nxt)
 	{
 		start = t->nxt;
 		free(t);
@@ -25,6 +33,8 @@ void freeLinkedList(int_LL* start)
 	}
 }
 
+/* Adds an element to the back of the list.
+ */
 void pushBackLinkedList(int_LL *start, int val)
 {
 	int_LL *t = start;
@@ -34,6 +44,8 @@ void pushBackLinkedList(int_LL *start, int val)
 	t->nxt = nxt;
 }
 
+/* Adds a link to the list at a certain index, pushing back the rest on the links.
+ */
 void insertLinkedList(int_LL *start, int index, int val)
 {
 	int_LL *t = start;
@@ -50,6 +62,8 @@ void insertLinkedList(int_LL *start, int index, int val)
 	insert->nxt = nxt;
 }
 
+/* Returns the amount of links in the list.
+ */
 int linkedListSize(int_LL *start)
 {
 	if(start == NULL)
@@ -64,6 +78,8 @@ int linkedListSize(int_LL *start)
 	return count;
 }
 
+/* Returns the value stored at a specific index in the list.
+ */
 int getLink(int_LL *start, int index)
 {
 	int_LL *t = start;
@@ -76,6 +92,9 @@ int getLink(int_LL *start, int index)
 	return t->val;
 }
 
+/* Removes a link from the list, and relinks the proceeding and preceeding links to each 
+ * other to preserve continuity.
+ */
 void deleteLink(int_LL *start, int index)
 {
 	int_LL *t = start, *t2;
@@ -91,6 +110,8 @@ void deleteLink(int_LL *start, int index)
 	free(t);
 }
 
+/* Sets the value of a specific link to given value.
+ */
 void setLink(int_LL *start, int index, int val)
 {
 	int_LL *t = start;
