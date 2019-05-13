@@ -17,3 +17,9 @@
 |void popBackLinkedList(int_LL *start)|popBackLinkedList(ll) where ll is the linkedList start. Removes the last link from the list.|
 |void deleteLink(int_LL *start, int index)|deleteLink(ll, index) where ll is the linkedList start, and index is the index. Removes the link at the given index. Relinks list for continuity.|
 |void setLink(int_LL *start, int index, int val)|setLink(ll, index, yourNum) where ll is the linkedList start, index is the index, and yourNum is the value to place. Updates the given link to hold the given value.|
+
+# Creating a Linked List
+Linked Lists should be created by using the provided `int_LL* initLinkedList(int val)` method and manipulated using the given methods to ensure that no undocumented behavior occurs. The `void freeLinkedList(int_LL* start)` method is provided to free memory used by the list.
+
+# More information
+The header file is thoroughly commented, and contains more insights on the uses and quirks of each method in its headings and comments.
