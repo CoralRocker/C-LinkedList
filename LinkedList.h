@@ -171,3 +171,15 @@ int_LL* linkPointer(int_LL *start, int index)
 	}
 	return t;
 }
+
+/* Swaps the contents of two links at separate (or equal indexes.
+ */
+void swapLink(int_LL *start, int index1, int index2)
+{
+	int_LL *t1 = linkPointer(start, index1),
+	       *t2 = linkPointer(start, index2);
+	int n1 = t1->val,
+	    n2 = t2->val;
+	t1->val = n2;
+	t2->val = n1;
+}
